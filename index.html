@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A&C CLOTHING — Bold Shirts, Real Cotton</title>
+
+<meta name="description" content="A&C Clothing: custom graphic shirts in Low Cotton (GH₵100) and High Cotton (GH₵200). Order on WhatsApp.">
+
+<style>
+
+/* ===== COLOURS: change these to restyle the whole site ===== */
+
+:root{--red:#d7192d;--red2:#b01223;--black:#0b0b0b;--ink:#111;--bg:#f5f3ef;--card:#fff;--line:#e2dfd8;--mut:#6b6760}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+a{text-decoration:none;color:inherit}button,input{font:inherit;color:inherit}button{cursor:pointer;border:0;background:none}
+
+[hidden]{display:none!important}
+
+
+
+/* top bar + nav */
+
+.ann{background:var(--black);color:#fff;text-align:center;font-size:12px;font-weight:700;letter-spacing:1.4px;padding:10px 12px}.ann b{color:var(--red)}
+
+nav{height:76px;background:#fff;border-bottom:3px solid var(--black);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:100}
+
+.logo{display:flex;align-items:center;height:100%}.logo img{height:54px;width:auto;display:block}
+
+.wm{font-weight:900;font-size:21px;letter-spacing:-.5px;line-height:1}.wm b{color:var(--red)}
+
+.links{display:flex;gap:28px;font-size:13px;font-weight:800;letter-spacing:.6px}.links a{padding:6px 0;border-bottom:2px solid transparent;transition:.2s}.links a:hover{border-color:var(--red);color:var(--red)}
+
+.icons{display:flex;gap:8px;align-items:center}
+
+.ib{height:42px;min-width:42px;padding:0 14px;border-radius:30px;border:2px solid var(--black);background:#fff;font-weight:800;font-size:13px;position:relative;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:6px}.ib:hover{background:var(--black);color:#fff}
+
+.ib.red{background:var(--red);border-color:var(--red);color:#fff}.ib.red:hover{background:var(--red2)}
+
+#cc{position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;border-radius:99px;background:var(--red);color:#fff;font-size:11px;display:grid;place-items:center;padding:0 5px;border:2px solid #fff}
+
+.burger{display:none}
+
+
+
+/* buttons */
+
+.btn{display:inline-block;padding:16px 28px;border-radius:6px;background:var(--black);color:#fff;font-weight:800;font-size:14px;letter-spacing:.8px;transition:.25s;text-align:center}
+
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px #0003}.btn.red{background:var(--red)}.btn.red:hover{background:var(--red2)}.btn.line{background:transparent;color:var(--ink);border:2px solid var(--black)}.btn.full{width:100%;display:block}.btn.line:hover{background:var(--black);color:#fff}
+
+
+
+/* hero */
+
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center;padding:70px 5%;min-height:620px;background:linear-gradient(115deg,var(--bg) 55%,#ece7df 55%)}
+
+.eyebrow{display:inline-block;background:var(--black);color:#fff;font-size:12px;font-weight:800;letter-spacing:2px;padding:7px 14px;border-radius:4px}
+
+.hero h1{font-size:clamp(52px,8.5vw,108px);line-height:.88;letter-spacing:-5px;margin:24px 0;font-weight:900}.hero h1 em{font-style:normal;color:var(--red)}
+
+.hero p{max-width:480px;color:#4d4a44;line-height:1.7;margin-bottom:28px;font-size:17px}
+
+.cta{display:flex;gap:12px;flex-wrap:wrap}.cta .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:0 28px;white-space:nowrap;border:2px solid var(--black);line-height:1}.cta .btn.red{border-color:var(--red)}
+
+.hero-img{position:relative;aspect-ratio:4/5;max-height:580px;width:100%;border:4px solid var(--black);border-radius:10px;background:#ddd8cf;overflow:hidden;box-shadow:14px 14px 0 var(--red)}
+
+.tagp{position:absolute;z-index:3;background:#fff;border:2px solid var(--black);border-radius:6px;padding:9px 14px;font-size:12px;font-weight:800;letter-spacing:.5px}.tagp b{color:var(--red);font-size:15px}
+
+
+
+/* image slots: put your photo in /images, the sample shirt shows until then */
+
+.slot{position:absolute;inset:0}.slot svg{width:100%;height:100%;padding:14% 14% 20%;filter:drop-shadow(0 16px 20px #0003)}
+
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2}.slot.ok svg,.slot.ok .hint{display:none}
+
+.hint{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-size:11px;font-weight:800;letter-spacing:1.5px;color:#777;line-height:1.5}.hint small{display:block;font-weight:600;letter-spacing:.3px;color:#999}
+
+
+
+/* marquee */
+
+.marq{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;padding:15px 0;font-weight:900;font-size:19px;letter-spacing:2px}
+
+.marq div{display:inline-block;animation:mq 30s linear infinite}.marq span{margin:0 24px}
+
+@keyframes mq{to{transform:translateX(-50%)}}
+
+
+
+/* sections */
+
+.section{padding:84px 5%}
+
+.sh{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+
+h2.t{font-size:clamp(34px,5vw,50px);letter-spacing:-2px;line-height:1}h2.t em{font-style:normal;color:var(--red)}.sh p{color:var(--mut);margin-top:8px}
+
+
+
+/* grades */
+
+.grades{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+.grade{background:#fff;border:3px solid var(--black);border-radius:12px;padding:32px;position:relative}
+
+.grade.hi{background:var(--black);color:#fff;border-color:var(--black)}
+
+.grade .pr{font-size:58px;font-weight:900;letter-spacing:-3px;margin:8px 0}.grade .pr small{font-size:15px;letter-spacing:0;font-weight:700}
+
+.grade h3{font-size:14px;letter-spacing:2px;color:var(--red)}
+
+.grade ul{list-style:none;margin:16px 0 24px}.grade li{padding:7px 0;border-bottom:1px solid #8883;font-size:15px}.grade li:before{content:"✓ ";color:var(--red);font-weight:900}
+
+.best{position:absolute;top:-14px;right:22px;background:var(--red);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;padding:6px 12px;border-radius:4px}
+
+
+
+/* shop */
+
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+.filter{padding:11px 20px;border:2px solid var(--black);background:#fff;border-radius:30px;font-weight:800;font-size:13px;transition:.2s}.filter:hover{background:#eee}.filter.on{background:var(--black);color:#fff}
+
+#sort{padding:11px 14px;border:2px solid var(--black);border-radius:30px;background:#fff;font-weight:700;outline:0}
+
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+
+.product{background:#fff;border:2px solid var(--black);border-radius:12px;overflow:hidden;cursor:pointer;transition:.25s}
+
+.product:hover{transform:translate(-4px,-4px);box-shadow:6px 6px 0 var(--red)}
+
+.pimg{position:relative;aspect-ratio:3/4;background:#e9e5dd;overflow:hidden;border-bottom:2px solid var(--black)}
+
+.gb{position:absolute;top:12px;left:12px;z-index:3;background:var(--black);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;padding:6px 11px;border-radius:4px}.gb.hi{background:var(--red)}
+
+.pinfo{padding:16px}.pinfo h3{font-size:17px;margin-bottom:4px}.pinfo p{color:var(--mut);font-size:13px;margin-bottom:14px}
+
+.prow{display:flex;justify-content:space-between;align-items:center}.price{font-weight:900;font-size:20px}
+
+.add{background:var(--red);color:#fff;padding:10px 15px;border-radius:6px;font-size:12px;font-weight:800;letter-spacing:.5px}.add:hover{background:var(--red2)}
+
+.empty{grid-column:1/-1;text-align:center;color:var(--mut);padding:60px 0}
+
+
+
+/* steps */
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+.step{background:#fff;border:2px solid var(--black);border-radius:12px;padding:28px}.step b{display:block;font-size:46px;color:var(--red);letter-spacing:-2px;line-height:1;margin-bottom:12px}.step p{color:var(--mut);line-height:1.6;margin-top:6px;font-size:15px}
+
+
+
+/* custom */
+
+.custom{margin:0 5%;background:var(--black);color:#fff;border-radius:16px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:56px;position:relative;overflow:hidden}
+
+.custom h2{font-size:clamp(34px,5vw,52px);letter-spacing:-2px;line-height:.98;margin:14px 0}.custom p{color:#bbb;line-height:1.7;max-width:460px;margin-bottom:24px}
+
+.cimg{position:relative;aspect-ratio:4/5;border:3px solid #fff;border-radius:10px;background:#222;overflow:hidden}.cimg .hint{color:#aaa}
+
+
+
+/* contact */
+
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+.cc2{background:#fff;border:3px solid var(--black);border-radius:12px;padding:30px}.cc2 h3{font-size:14px;letter-spacing:2px;color:var(--red);margin-bottom:14px}
+
+.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px dashed var(--line);font-size:15px}.row b{text-align:right}
+
+.big{font-size:clamp(24px,4vw,34px);font-weight:900;letter-spacing:-1px;margin:6px 0 14px}
+
+.note{font-size:13px;color:var(--mut);line-height:1.6;margin-top:14px}
+
+.cbtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.cbtns .btn{padding:13px 16px;flex:1;min-width:140px;display:inline-flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap;font-size:13px}
+
+
+
+/* footer */
+
+footer{background:var(--black);color:#fff;padding:56px 5% 30px;margin-top:84px;border-top:6px solid var(--red)}
+
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}.fl{background:#fff;padding:8px 12px;border-radius:8px;display:inline-block;margin-bottom:14px}.fl img{height:44px;display:block}.fl .wm{color:var(--black);font-size:19px}
+
+footer p,footer a{color:#aaa;font-size:14px;line-height:2;display:block}footer a:hover{color:var(--red)}footer h4{margin-bottom:12px;letter-spacing:1.5px;font-size:13px}
+
+.copy{border-top:1px solid #333;margin-top:34px;padding-top:20px;color:#777;font-size:12px}
+
+
+
+/* modal + drawer */
+
+.modal{position:fixed;inset:0;background:#000a;display:none;place-items:center;z-index:260;padding:16px}.modal.open{display:grid}
+
+.mbox{background:#fff;border:3px solid var(--black);border-radius:16px;width:min(900px,100%);max-height:92vh;overflow:auto;position:relative}
+
+.mx{position:absolute;right:12px;top:8px;font-size:32px;z-index:5;width:40px;height:40px;line-height:1}
+
+.qv{display:grid;grid-template-columns:1fr 1fr}.qimg{position:relative;min-height:540px;background:#e9e5dd;border-right:3px solid var(--black)}
+
+.qinfo{padding:34px}.qinfo h2{font-size:30px;letter-spacing:-1px;margin:10px 0 6px}.price.big{font-size:28px;margin-bottom:12px}.qinfo p{color:#555;line-height:1.7;font-size:15px}
+
+.lbl{font-size:11px;letter-spacing:2px;font-weight:800;margin:22px 0 10px}
+
+.sizes{display:flex;gap:8px;flex-wrap:wrap}.sz{min-width:52px;padding:11px 14px;border:2px solid var(--black);border-radius:8px;font-weight:800}.sz.on{background:var(--black);color:#fff}
+
+.qty{display:inline-flex;align-items:center;border:2px solid var(--black);border-radius:30px;margin-bottom:24px}.qty button{width:42px;height:42px;font-size:20px;font-weight:800}.qty b{min-width:30px;text-align:center}
+
+.scrim{position:fixed;inset:0;background:#000a;opacity:0;pointer-events:none;transition:.3s;z-index:250}.scrim.open{opacity:1;pointer-events:auto}
+
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(450px,100%);background:#fff;border-left:3px solid var(--black);transform:translateX(100%);transition:.35s;z-index:300;display:flex;flex-direction:column}.drawer.open{transform:none}
+
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:3px solid var(--black)}.dh h3{font-size:20px}
+
+.dl{flex:1;overflow:auto;padding:8px 24px}
+
+.line{display:grid;grid-template-columns:72px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid #eee;align-items:center}
+
+.lt{position:relative;width:72px;height:88px;border-radius:8px;border:2px solid var(--black);background:#e9e5dd;overflow:hidden}.lt .slot svg{padding:6%}.lt .hint{display:none}
+
+.line h4{font-size:14px}.line small{color:var(--mut)}.line .qty{margin:6px 0 0;transform:scale(.8);transform-origin:left}.line .qty button{width:34px;height:34px}
+
+.rm{font-size:12px;color:var(--red);text-decoration:underline}
+
+.df{padding:18px 24px;border-top:3px solid var(--black);background:#faf8f4}
+
+.tot{display:flex;justify-content:space-between;font-weight:900;font-size:20px;margin-bottom:12px}
+
+.f{display:grid;gap:8px;margin-bottom:10px}.f input{width:100%;padding:12px 14px;border:2px solid var(--black);border-radius:8px;outline:0;background:#fff}.f input:focus{border-color:var(--red)}
+
+.err{color:var(--red);font-size:12px}.err:empty{display:none}
+
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--black);color:#fff;padding:13px 22px;border-radius:30px;z-index:400;font-size:14px;font-weight:700;box-shadow:0 10px 30px #0005;border:2px solid var(--red)}
+
+.wa{position:fixed;bottom:20px;right:20px;width:58px;height:58px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;font-size:28px;z-index:200;box-shadow:0 8px 24px #0004;transition:.2s}.wa:hover{transform:scale(1.08)}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+
+
+
+/* mobile */
+
+@media(max-width:900px){
+
+ .burger{display:inline-flex}.ib.call span{display:none}
+
+ .links{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:6px 5% 14px;border-bottom:3px solid var(--black)}.links.open{display:flex}.links a{padding:14px 0;border-bottom:1px solid #eee}
+
+ .hero{grid-template-columns:1fr;padding-top:44px;background:var(--bg)}.hero-img{max-width:440px;max-height:480px}
+
+ .grades,.steps,.contact,.custom,.qv,.fg{grid-template-columns:1fr}.custom{padding:34px 26px}.qimg{min-height:440px;border-right:0;border-bottom:3px solid var(--black)}
+
+}
+
+@media(max-width:550px){
+
+ .hero h1{letter-spacing:-3px}.cta .btn{flex:1 1 100%;padding:0 18px}.products{grid-template-columns:1fr 1fr;gap:10px}.pinfo{padding:12px}.pinfo p{display:none}.price{font-size:17px}.add{padding:8px 10px}
+
+ .section{padding:58px 5%}.qinfo{padding:22px}.grade{padding:24px}.wm{font-size:17px}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<div class="ann">LOW COTTON <b>GH₵ 100</b> · HIGH COTTON <b>GH₵ 200</b> · ORDER ON WHATSAPP · PAY BY MOMO</div>
+
+
+
+<nav>
+
+ <a href="#" class="logo" id="logoTop" aria-label="A&C Clothing home"></a>
+
+ <div class="links" id="links">
+
+  <a href="#grades">COTTON</a><a href="#shop">SHOP</a><a href="#how">HOW TO ORDER</a><a href="#custom">CUSTOM PRINTS</a><a href="#contact">CONTACT</a>
+
+ </div>
+
+ <div class="icons">
+
+  <a class="ib call" id="callTop" href="#">📞<span>Call</span></a>
+
+  <button class="ib red" id="cbtn" aria-label="Open cart">🛒<span id="cc">0</span></button>
+
+  <button class="ib burger" id="burger" aria-label="Menu">☰</button>
+
+ </div>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+ <div>
+
+  <span class="eyebrow">A&C CLOTHING</span>
+
+  <h1>WEAR THE <em>KING.</em></h1>
+
+  <p>Bold graphic shirts in two grades of cotton. Pick your style, order on WhatsApp and pay by MoMo. It's that simple.</p>
+
+  <div class="cta"><a href="#shop" class="btn red">SHOP SHIRTS →</a><a href="#" class="btn line" id="waHero" target="_blank" rel="noopener">CHAT ON WHATSAPP</a></div>
+
+ </div>
+
+ <div class="hero-img" id="heroImg">
+
+  <span class="tagp" style="top:18px;left:18px">LOW COTTON <b>GH₵ 100</b></span>
+
+  <span class="tagp" style="bottom:18px;right:18px">HIGH COTTON <b>GH₵ 200</b></span>
+
+ </div>
+
+</section>
+
+
+
+<div class="marq"><div id="marq"></div></div>
+
+
+
+<!-- COTTON GRADES -->
+
+<section class="section" id="grades">
+
+ <div class="sh rv"><div><h2 class="t">Choose your <em>cotton.</em></h2><p>Two grades. One bold look. Pick what fits your budget.</p></div></div>
+
+ <div class="grades">
+
+  <div class="grade rv">
+
+   <h3>LOW COTTON</h3><div class="pr">GH₵ 100</div>
+
+   <ul><li>Light, easy everyday shirt</li><li>Great value for the price</li><li>Full-colour graphic print</li><li>Sizes S to XXL</li></ul>
+
+   <button class="btn line full" data-go="low">SHOP LOW COTTON →</button>
+
+  </div>
+
+  <div class="grade hi rv">
+
+   <span class="best">PREMIUM</span>
+
+   <h3>HIGH COTTON</h3><div class="pr">GH₵ 200</div>
+
+   <ul><li>Thicker, softer premium cotton</li><li>Feels better and lasts longer</li><li>Sharper, richer print</li><li>Sizes S to XXL</li></ul>
+
+   <button class="btn red full" data-go="high">SHOP HIGH COTTON →</button>
+
+  </div>
+
+ </div>
+
+</section>
+
+
+
+<!-- SHOP -->
+
+<section class="section" id="shop" style="padding-top:0">
+
+ <div class="sh rv">
+
+  <div><h2 class="t">The <em>shirts.</em></h2><p>Tap a shirt to pick your size and add it to your cart.</p></div>
+
+  <div class="tools">
+
+   <button class="filter on" data-t="all">All</button><button class="filter" data-t="low">Low Cotton</button><button class="filter" data-t="high">High Cotton</button>
+
+   <select id="sort" aria-label="Sort"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option></select>
+
+  </div>
+
+ </div>
+
+ <div class="products" id="products"></div>
+
+</section>
+
+
+
+<!-- HOW TO ORDER -->
+
+<section class="section" id="how" style="padding-top:0">
+
+ <div class="sh rv"><div><h2 class="t">How to <em>order.</em></h2></div></div>
+
+ <div class="steps">
+
+  <div class="step rv"><b>01</b><h3>Pick your shirts</h3><p>Choose a design, a cotton grade and your size. Add to cart.</p></div>
+
+  <div class="step rv"><b>02</b><h3>Send on WhatsApp</h3><p>Fill in your name and delivery spot. Your order opens in WhatsApp ready to send.</p></div>
+
+  <div class="step rv"><b>03</b><h3>Pay by MoMo</h3><p>We confirm your order, you pay by Mobile Money, and we get your shirts to you.</p></div>
+
+ </div>
+
+</section>
+
+
+
+<!-- CUSTOM PRINTS -->
+
+<section class="custom rv" id="custom">
+
+ <div>
+
+  <span class="eyebrow" style="background:var(--red)">CUSTOM GRAPHICS</span>
+
+  <h2>Got your own design?</h2>
+
+  <p>We're a graphics brand. Send us your idea, logo or artwork on WhatsApp and we'll print it on your shirts, for you, your team, church, school or event.</p>
+
+  <a href="#" class="btn red" id="waCustom" target="_blank" rel="noopener">SEND US YOUR DESIGN →</a>
+
+ </div>
+
+ <div class="cimg" id="customImg"></div>
+
+</section>
+
+
+
+<!-- CONTACT + PAYMENT -->
+
+<section class="section" id="contact">
+
+ <div class="sh rv"><div><h2 class="t">Talk to <em>us.</em></h2><p>Call, WhatsApp or pay by MoMo on the same number.</p></div></div>
+
+ <div class="contact">
+
+  <div class="cc2 rv">
+
+   <h3>CALL · WHATSAPP</h3>
+
+   <div class="big" id="phoneBig"></div>
+
+   <div class="row"><span>Name</span><b id="nameC"></b></div>
+
+   <div class="cbtns"><a class="btn red" id="callBtn" href="#">📞 CALL NOW</a><a class="btn line" id="waBtn" href="#" target="_blank" rel="noopener">💬 WHATSAPP</a></div>
+
+  </div>
+
+  <div class="cc2 rv">
+
+   <h3>PAY BY MOBILE MONEY</h3>
+
+   <div class="big" id="momoBig"></div>
+
+   <div class="row"><span>Account name</span><b id="momoName"></b></div>
+
+   <div class="cbtns"><button class="btn line" id="copyBtn">📋 COPY NUMBER</button></div>
+
+   <p class="note">Please confirm your order on WhatsApp first. When you pay, check that the name shown on MoMo matches the account name above, then send us the payment screenshot.</p>
+
+  </div>
+
+ </div>
+
+</section>
+
+
+
+<footer>
+
+ <div class="fg">
+
+  <div><div class="fl" id="logoFoot"></div><p>Bold graphic shirts in Low Cotton and High Cotton. Custom prints available.</p></div>
+
+  <div><h4>SHOP</h4><a href="#grades">Cotton grades</a><a href="#shop">All shirts</a><a href="#custom">Custom prints</a></div>
+
+  <div><h4>CONTACT</h4><a id="fCall" href="#"></a><a id="fWa" href="#" target="_blank" rel="noopener">WhatsApp us</a><a href="#how">How to order</a></div>
+
+ </div>
+
+ <div class="copy">© 2026 A&C Clothing. All rights reserved.</div>
+
+</footer>
+
+
+
+<a class="wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬</a>
+
+
+
+<!-- quick view -->
+
+<div class="modal" id="modal"><div class="mbox"><button class="mx" id="mx" aria-label="Close">×</button><div id="mbody"></div></div></div>
+
+
+
+<!-- cart -->
+
+<div class="scrim" id="scrim"></div>
+
+<aside class="drawer" id="drawer" aria-label="Cart">
+
+ <div class="dh"><h3>Your cart</h3><button class="mx" style="position:static" id="dx" aria-label="Close cart">×</button></div>
+
+ <div class="dl" id="dl"></div>
+
+ <div class="df" id="df"></div>
+
+</aside>
+
+
+
+<script>
+
+/* =====================================================
+
+   1. YOUR BRAND DETAILS (edit these)
+
+   ===================================================== */
+
+const BRAND={
+
+  name:'A&C CLOTHING',
+
+  phoneIntl:'+233209279360',          // for the Call button
+
+  phoneShow:'+233 20 927 9360',       // how it looks on the page
+
+  whatsapp:'233209279360',            // WhatsApp format: no + and no spaces
+
+  momoNumber:'0591269279',          // MoMo number shown to customers
+
+  momoName:'Jacob Arthur Coleman',
+
+  currency:'GH₵',
+
+  logo:'images/KB.png',             // your logo
+
+  heroImg:'images/IMG_2763.JPG.jpeg',          // big photo at the top
+
+  customImg:'images/IMG_4143.JPG.jpeg',      // photo in the "custom designs" block
+
+  marquee:['A&C CLOTHING','LOW COTTON GH₵100','HIGH COTTON GH₵200','BOLD GRAPHICS','ORDER ON WHATSAPP']
+
+};
+
+const SIZES=['S','M','L','XL','XXL'];
+
+
+
+/* =====================================================
+
+   2. PRICES (change here and it updates everywhere)
+
+   ===================================================== */
+
+const GRADES={
+
+  low :{label:'LOW COTTON', price:100, blurb:'Light everyday cotton. Great value.'},
+
+  high:{label:'HIGH COTTON',price:200, blurb:'Thick, soft premium cotton. Lasts longer.'}
+
+};
+
+
+
+/* =====================================================
+
+   3. YOUR SHIRTS. Photos live in the "jake images" folder.
+
+      Change img below to use a different photo for a shirt.
+
+      grade: 'low' or 'high'.  color is only for the sample shirt.
+
+      To add a shirt, copy one line and change id, name and img.
+
+   ===================================================== */
+
+const PRODUCTS=[
+
+ {id:1,  name:'King Graphic Tee 01',   grade:'low',  img:'images/IMG_0058.JPG.jpeg'},
+
+ {id:2,  name:'King Graphic Tee 02',   grade:'low',  img:'images/IMG_2763.JPG.jpeg'},
+
+ {id:3,  name:'King Graphic Tee 03',   grade:'low',  img:'images/IMG_2764.JPG.jpeg'},
+
+ {id:4,  name:'King Graphic Tee 04',   grade:'low',  img:'images/IMG_2765.JPG.jpeg'},
+
+ {id:5,  name:'King Graphic Tee 05',   grade:'low',  img:'images/IMG_2766.JPG.jpeg'},
+
+ {id:6,  name:'King Graphic Tee 06',   grade:'low',  img:'images/IMG_2767.JPG.jpeg'},
+
+ {id:7,  name:'King Graphic Tee 07',   grade:'low',  img:'images/IMG_2768.JPG.jpeg'},
+
+ {id:8,  name:'King Graphic Tee 08',   grade:'low',  img:'images/IMG_2769.JPG.jpeg'},
+
+ {id:9,  name:'King Graphic Tee 09',   grade:'low',  img:'images/IMG_2770.JPG.jpeg'},
+
+ {id:10,  name:'King Graphic Tee 10',   grade:'low',  img:'images/IMG_2771.JPG.jpeg'},
+
+ {id:11,  name:'King Graphic Tee 11',   grade:'low',  img:'images/IMG_2772.JPG.jpeg'},
+
+ {id:12,  name:'King Graphic Tee 12',   grade:'low',  img:'images/IMG_2773.JPG.jpeg'},
+
+ {id:13,  name:'King Graphic Tee 13',   grade:'low',  img:'images/IMG_2774.JPG.jpeg'},
+
+ {id:14,  name:'King Graphic Tee 14',   grade:'low',  img:'images/IMG_2775.JPG.jpeg'},
+
+ {id:15,  name:'King Graphic Tee 15',   grade:'low',  img:'images/IMG_2776.JPG.jpeg'},
+
+ {id:16,  name:'King Graphic Tee 16',   grade:'low',  img:'images/IMG_2777.JPG.jpeg'},
+
+ {id:17,  name:'King Graphic Tee 17',   grade:'low',  img:'images/IMG_2778.JPG.jpeg'},
+
+ {id:18,  name:'King Graphic Tee 18',   grade:'low',  img:'images/IMG_2779.JPG.jpeg'},
+
+ {id:19,  name:'King Graphic Tee 19',   grade:'low',  img:'images/IMG_2780.JPG.jpeg'},
+
+ {id:20,  name:'King Graphic Tee 20',   grade:'low',  img:'images/IMG_2782.JPG.jpeg'},
+
+ {id:21,  name:'King Graphic Tee 21',   grade:'low',  img:'images/IMG_2783.JPG.jpeg'},
+
+ {id:22,  name:'King Graphic Tee 22',   grade:'low',  img:'images/IMG_2784.JPG.jpeg'},
+
+ {id:23,  name:'King Graphic Tee 23',   grade:'low',  img:'images/IMG_2785.JPG.jpeg'},
+
+ {id:24,  name:'King Graphic Tee 24',   grade:'low',  img:'images/IMG_2786.JPG.jpeg'},
+
+ {id:25,  name:'King Graphic Tee 25',   grade:'low',  img:'images/IMG_2787.JPG.jpeg'},
+
+ {id:26,  name:'King Graphic Tee 26',   grade:'low',  img:'images/IMG_2788.JPG.jpeg'},
+
+ {id:27,  name:'King Graphic Tee 27',   grade:'low',  img:'images/IMG_2789.JPG.jpeg'},
+
+ {id:28,  name:'King Graphic Tee 28',   grade:'low',  img:'images/IMG_2790.JPG.jpeg'},
+
+ {id:29,  name:'King Graphic Tee 29',   grade:'low',  img:'images/IMG_2791.JPG.jpeg'},
+
+ {id:30,  name:'King Graphic Tee 30',   grade:'low',  img:'images/IMG_2792.JPG.jpeg'},
+
+ {id:31,  name:'King Graphic Tee 31',   grade:'low',  img:'images/IMG_2793.JPG.jpeg'},
+
+ {id:32,  name:'King Graphic Tee 32',   grade:'low',  img:'images/IMG_2794.JPG.jpeg'},
+
+ {id:33,  name:'King Graphic Tee 33',   grade:'low',  img:'images/IMG_2795.JPG.jpeg'},
+
+ {id:34,  name:'King Graphic Tee 34',   grade:'low',  img:'images/IMG_2796.JPG.jpeg'},
+
+ {id:35,  name:'King Graphic Tee 35',   grade:'low',  img:'images/IMG_2797.JPG.jpeg'},
+
+ {id:36,  name:'King Graphic Tee 36',   grade:'low',  img:'images/IMG_2798.JPG.jpeg'},
+
+ {id:37,  name:'King Graphic Tee 37',   grade:'low',  img:'images/IMG_2836.JPG.jpeg'},
+
+ {id:38,  name:'King Graphic Tee 38',   grade:'low',  img:'images/IMG_2837.JPG.jpeg'},
+
+ {id:39,  name:'King Graphic Tee 39',   grade:'low',  img:'images/IMG_2969.JPG.jpeg'},
+
+ {id:40,  name:'King Graphic Tee 40',   grade:'low',  img:'images/IMG_2970.JPG.jpeg'},
+
+ {id:41,  name:'King Graphic Tee 41',   grade:'low',  img:'images/IMG_4143.JPG.jpeg'},
+
+ {id:42,  name:'King Graphic Tee 42',   grade:'low',  img:'images/IMG_4144.JPG.jpeg'},
+
+ {id:43,  name:'King Graphic Tee 43',   grade:'low',  img:'images/IMG_4145.JPG.jpeg'},
+
+ {id:44,  name:'King Graphic Tee 44',   grade:'low',  img:'images/IMG_4146.JPG.jpeg'},
+
+ {id:45,  name:'King Graphic Tee 45',   grade:'low',  img:'images/IMG_4147.JPG.jpeg'},
+
+ {id:46,  name:'King Graphic Tee 46',   grade:'low',  img:'images/IMG_4148.JPG.jpeg'},
+
+
+
+ {id:47,  name:'Royal Premium Tee 01',   grade:'high',  img:'images/IMG_0058.JPG.jpeg'},
+
+ {id:48,  name:'Royal Premium Tee 02',   grade:'high',  img:'images/IMG_2763.JPG.jpeg'},
+
+ {id:49,  name:'Royal Premium Tee 03',   grade:'high',  img:'images/IMG_2764.JPG.jpeg'},
+
+ {id:50,  name:'Royal Premium Tee 04',   grade:'high',  img:'images/IMG_2765.JPG.jpeg'},
+
+ {id:51,  name:'Royal Premium Tee 05',   grade:'high',  img:'images/IMG_2766.JPG.jpeg'},
+
+ {id:52,  name:'Royal Premium Tee 06',   grade:'high',  img:'images/IMG_2767.JPG.jpeg'},
+
+ {id:53,  name:'Royal Premium Tee 07',   grade:'high',  img:'images/IMG_2768.JPG.jpeg'},
+
+ {id:54,  name:'Royal Premium Tee 08',   grade:'high',  img:'images/IMG_2769.JPG.jpeg'},
+
+ {id:55,  name:'Royal Premium Tee 09',   grade:'high',  img:'images/IMG_2770.JPG.jpeg'},
+
+ {id:56,  name:'Royal Premium Tee 10',   grade:'high',  img:'images/IMG_2771.JPG.jpeg'},
+
+ {id:57,  name:'Royal Premium Tee 11',   grade:'high',  img:'images/IMG_2772.JPG.jpeg'},
+
+ {id:58,  name:'Royal Premium Tee 12',   grade:'high',  img:'images/IMG_2773.JPG.jpeg'},
+
+ {id:59,  name:'Royal Premium Tee 13',   grade:'high',  img:'images/IMG_2774.JPG.jpeg'},
+
+ {id:60,  name:'Royal Premium Tee 14',   grade:'high',  img:'images/IMG_2775.JPG.jpeg'},
+
+ {id:61,  name:'Royal Premium Tee 15',   grade:'high',  img:'images/IMG_2776.JPG.jpeg'},
+
+ {id:62,  name:'Royal Premium Tee 16',   grade:'high',  img:'images/IMG_2777.JPG.jpeg'},
+
+ {id:63,  name:'Royal Premium Tee 17',   grade:'high',  img:'images/IMG_2778.JPG.jpeg'},
+
+ {id:64,  name:'Royal Premium Tee 18',   grade:'high',  img:'images/IMG_2779.JPG.jpeg'},
+
+ {id:65,  name:'Royal Premium Tee 19',   grade:'high',  img:'images/IMG_2780.JPG.jpeg'},
+
+ {id:66,  name:'Royal Premium Tee 20',   grade:'high',  img:'images/IMG_2782.JPG.jpeg'},
+
+ {id:67,  name:'Royal Premium Tee 21',   grade:'high',  img:'images/IMG_2783.JPG.jpeg'},
+
+ {id:68,  name:'Royal Premium Tee 22',   grade:'high',  img:'images/IMG_2784.JPG.jpeg'},
+
+ {id:69,  name:'Royal Premium Tee 23',   grade:'high',  img:'images/IMG_2785.JPG.jpeg'},
+
+ {id:70,  name:'Royal Premium Tee 24',   grade:'high',  img:'images/IMG_2786.JPG.jpeg'},
+
+ {id:71,  name:'Royal Premium Tee 25',   grade:'high',  img:'images/IMG_2787.JPG.jpeg'},
+
+ {id:72,  name:'Royal Premium Tee 26',   grade:'high',  img:'images/IMG_2788.JPG.jpeg'},
+
+ {id:73,  name:'Royal Premium Tee 27',   grade:'high',  img:'images/IMG_2789.JPG.jpeg'},
+
+ {id:74,  name:'Royal Premium Tee 28',   grade:'high',  img:'images/IMG_2790.JPG.jpeg'},
+
+ {id:75,  name:'Royal Premium Tee 29',   grade:'high',  img:'images/IMG_2791.JPG.jpeg'},
+
+ {id:76,  name:'Royal Premium Tee 30',   grade:'high',  img:'images/IMG_2792.JPG.jpeg'},
+
+ {id:77,  name:'Royal Premium Tee 31',   grade:'high',  img:'images/IMG_2793.JPG.jpeg'},
+
+ {id:78,  name:'Royal Premium Tee 32',   grade:'high',  img:'images/IMG_2794.JPG.jpeg'},
+
+ {id:79,  name:'Royal Premium Tee 33',   grade:'high',  img:'images/IMG_2795.JPG.jpeg'},
+
+ {id:80,  name:'Royal Premium Tee 34',   grade:'high',  img:'images/IMG_2796.JPG.jpeg'},
+
+ {id:81,  name:'Royal Premium Tee 35',   grade:'high',  img:'images/IMG_2797.JPG.jpeg'},
+
+ {id:82,  name:'Royal Premium Tee 36',   grade:'high',  img:'images/IMG_2798.JPG.jpeg'},
+
+ {id:83,  name:'Royal Premium Tee 37',   grade:'high',  img:'images/IMG_2836.JPG.jpeg'},
+
+ {id:84,  name:'Royal Premium Tee 38',   grade:'high',  img:'images/IMG_2837.JPG.jpeg'},
+
+ {id:85,  name:'Royal Premium Tee 39',   grade:'high',  img:'images/IMG_2969.JPG.jpeg'},
+
+ {id:86,  name:'Royal Premium Tee 40',   grade:'high',  img:'images/IMG_2970.JPG.jpeg'},
+
+ {id:87,  name:'Royal Premium Tee 41',   grade:'high',  img:'images/IMG_4143.JPG.jpeg'},
+
+ {id:88,  name:'Royal Premium Tee 42',   grade:'high',  img:'images/IMG_4144.JPG.jpeg'},
+
+ {id:89,  name:'Royal Premium Tee 43',   grade:'high',  img:'images/IMG_4145.JPG.jpeg'},
+
+ {id:90,  name:'Royal Premium Tee 44',   grade:'high',  img:'images/IMG_4146.JPG.jpeg'},
+
+ {id:91,  name:'Royal Premium Tee 45',   grade:'high',  img:'images/IMG_4147.JPG.jpeg'},
+
+ {id:92,  name:'Royal Premium Tee 46',   grade:'high',  img:'images/IMG_4148.JPG.jpeg'},
+
+];
+
+
+
+/* =====================================================
+
+   4. THE CODE (you can leave this part as it is)
+
+   ===================================================== */
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+
+const money=n=>BRAND.currency+' '+Number(n).toLocaleString();
+
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const priceOf=p=>p.price??GRADES[p.grade].price;
+
+const store={g(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v===null?d:v}catch(e){return d}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+let cart=store.g('ac_cart',[]),type='all',sort='featured',sel=null,tt;
+
+const WA='https://wa.me/'+BRAND.whatsapp;
+
+
+
+function toast(t){let e=$('.toast');if(e)e.remove();e=document.createElement('div');e.className='toast';e.textContent=t;document.body.appendChild(e);clearTimeout(tt);tt=setTimeout(()=>e.remove(),2600)}
+
+
+
+/* logo: shows your image, or the red/black name until you add it */
+
+function logoFail(img){const s=document.createElement('span');s.className='wm';s.innerHTML='A&C <b>CLOTHING</b>';img.replaceWith(s)}
+
+const logoImg=()=>`<img src="${esc(BRAND.logo)}" alt="${esc(BRAND.name)}" onerror="logoFail(this)">`;
+
+
+
+/* image slot: sample shirt + hint underneath, your photo on top once the file exists */
+
+function shirt(c){return `<svg viewBox="0 0 100 100" aria-hidden="true"><path d="M20 5 L38 0 L50 9 L62 0 L80 5 L100 25 L82 40 L75 28 L75 100 L25 100 L25 28 L18 40 L0 25Z" fill="${c}" stroke="#000" stroke-width="1.4"/><path d="M38 0 L50 9 L62 0 L58 -1 L50 5 L42 -1Z" fill="#0003"/></svg>`}
+
+const slot=(src,c,hint=true)=>`<div class="slot">${shirt(c||'#fff')}${hint&&src?`<div class="hint">ADD PHOTO<small>${esc(src)}</small></div>`:''}${src?`<img src="${esc(src)}" alt="" loading="lazy" onload="this.parentNode.classList.add('ok')" onerror="this.remove()">`:''}</div>`;
+
+
+
+/* products */
+
+function renderProducts(){
+
+ let a=PRODUCTS.filter(p=>type==='all'||p.grade===type);
+
+ if(sort==='low')a.sort((x,y)=>priceOf(x)-priceOf(y));if(sort==='high')a.sort((x,y)=>priceOf(y)-priceOf(x));
+
+ $('#products').innerHTML=a.length?a.map(p=>`<article class="product rv" data-id="${p.id}"><div class="pimg"><span class="gb ${p.grade==='high'?'hi':''}">${GRADES[p.grade].label}</span>${slot(p.img,p.color)}</div><div class="pinfo"><h3>${esc(p.name)}</h3><p>${esc(GRADES[p.grade].blurb)}</p><div class="prow"><span class="price">${money(priceOf(p))}</span><button class="add">ADD +</button></div></div></article>`).join(''):'<p class="empty">No shirts here yet.</p>';
+
+ reveal()}
+
+function setType(t){type=t;$$('.filter').forEach(x=>x.classList.toggle('on',x.dataset.t===t));renderProducts()}
+
+$('#products').onclick=e=>{const c=e.target.closest('.product');if(c)openProduct(+c.dataset.id)};
+
+$$('.filter').forEach(b=>b.onclick=()=>setType(b.dataset.t));
+
+$('#sort').onchange=e=>{sort=e.target.value;renderProducts()};
+
+$$('[data-go]').forEach(b=>b.onclick=()=>{setType(b.dataset.go);$('#shop').scrollIntoView({behavior:'smooth'})});
+
+
+
+/* quick view */
+
+function openProduct(id){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;sel={p,size:'M',qty:1};const g=GRADES[p.grade];
+
+ $('#mbody').innerHTML=`<div class="qv"><div class="qimg">${slot(p.img,p.color)}</div><div class="qinfo"><span class="gb ${p.grade==='high'?'hi':''}" style="position:static;display:inline-block">${g.label}</span><h2>${esc(p.name)}</h2><div class="price big">${money(priceOf(p))}</div><p>${esc(g.blurb)}</p><div class="lbl">SIZE</div><div class="sizes">${SIZES.map(s=>`<button class="sz ${s==='M'?'on':''}" data-s="${s}">${s}</button>`).join('')}</div><div class="lbl">QUANTITY</div><div class="qty"><button data-q="-1">−</button><b id="qn">1</b><button data-q="1">+</button></div><button class="btn red full" id="addc">ADD TO CART · <span id="qt">${money(priceOf(p))}</span></button></div></div>`;
+
+ $('#modal').classList.add('open')}
+
+$('#mbody').onclick=e=>{if(!sel)return;const s=e.target.closest('.sz'),q=e.target.closest('[data-q]');
+
+ if(s){sel.size=s.dataset.s;$$('.sz').forEach(x=>x.classList.toggle('on',x===s))}
+
+ if(q){sel.qty=Math.max(1,Math.min(20,sel.qty+ +q.dataset.q));$('#qn').textContent=sel.qty;$('#qt').textContent=money(priceOf(sel.p)*sel.qty)}
+
+ if(e.target.closest('#addc')){addCart(sel.p.id,sel.size,sel.qty);closeAll();openCart()}}
+
+const closeModal=()=>$('#modal').classList.remove('open');
+
+$('#mx').onclick=closeModal;$('#modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
+
+
+
+/* cart */
+
+function addCart(id,size,qty){const l=cart.find(x=>x.id===id&&x.size===size);l?l.qty=Math.min(20,l.qty+qty):cart.push({id,size,qty});saveCart();toast('Added to cart ✓')}
+
+function saveCart(){store.s('ac_cart',cart);renderCart()}
+
+function renderCart(){
+
+ const L=cart.map((l,i)=>({...l,i,p:PRODUCTS.find(x=>x.id===l.id)})).filter(l=>l.p),n=L.reduce((a,l)=>a+l.qty,0),total=L.reduce((a,l)=>a+l.qty*priceOf(l.p),0);
+
+ $('#cc').textContent=n;$('#cc').hidden=!n;
+
+ $('#dl').innerHTML=L.length?L.map(l=>`<div class="line"><div class="lt">${slot(l.p.img,l.p.color,false)}</div><div><h4>${esc(l.p.name)}</h4><small>${GRADES[l.p.grade].label} · Size ${l.size} · ${money(priceOf(l.p))}</small><div class="qty"><button data-c="-1" data-i="${l.i}">−</button><b>${l.qty}</b><button data-c="1" data-i="${l.i}">+</button></div></div><div style="text-align:right"><b>${money(l.qty*priceOf(l.p))}</b><br><button class="rm" data-r="${l.i}">Remove</button></div></div>`).join(''):'<p class="empty" style="padding:70px 0">Your cart is empty.<br><br><button class="btn red" id="goshop">START SHOPPING</button></p>';
+
+ $('#df').hidden=!L.length;
+
+ $('#df').innerHTML=`<div class="tot"><span>Total</span><span>${money(total)}</span></div><form class="f" id="cf"><input required name="n" placeholder="Your name" autocomplete="name"><input required name="p" placeholder="Your phone number" inputmode="tel" autocomplete="tel"><input required name="a" placeholder="Delivery location / area"><div class="err" id="ce"></div><button class="btn red full">ORDER ON WHATSAPP →</button></form><a class="btn line full" href="tel:${BRAND.phoneIntl}" style="margin-bottom:10px;padding:13px">📞 OR CALL ${esc(BRAND.phoneShow)}</a><p class="note" style="margin-top:0">Your order opens in WhatsApp. After we confirm, pay by MoMo to <b>${esc(BRAND.momoNumber)}</b> (${esc(BRAND.momoName)}).</p>`;
+
+ if($('#cf'))$('#cf').onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));
+
+  if(!/^[0-9+\s]{9,15}$/.test(f.p.trim()))return $('#ce').textContent='Enter a valid phone number.';
+
+  const msg=`Hello ${BRAND.name}! I'd like to order:\n\n`+L.map(l=>`• ${l.p.name} (${GRADES[l.p.grade].label}, ${l.size}) x${l.qty} = ${money(l.qty*priceOf(l.p))}`).join('\n')+`\n\nTotal: ${money(total)}\n\nName: ${f.n}\nPhone: ${f.p}\nDelivery: ${f.a}`;
+
+  window.open(WA+'?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');toast('Opening WhatsApp…')}}
+
+$('#dl').onclick=e=>{const c=e.target.closest('[data-c]'),r=e.target.closest('[data-r]');
+
+ if(c){const l=cart[+c.dataset.i];if(l){l.qty=Math.max(1,Math.min(20,l.qty+ +c.dataset.c));saveCart()}}
+
+ if(r){cart.splice(+r.dataset.r,1);saveCart()}
+
+ if(e.target.id==='goshop'){closeAll();$('#shop').scrollIntoView({behavior:'smooth'})}}
+
+const openCart=()=>{$('#drawer').classList.add('open');$('#scrim').classList.add('open')};
+
+const closeAll=()=>{closeModal();$('#drawer').classList.remove('open');$('#scrim').classList.remove('open')};
+
+$('#cbtn').onclick=openCart;$('#dx').onclick=closeAll;$('#scrim').onclick=closeAll;
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+
+
+
+/* contact + copy */
+
+$('#copyBtn').onclick=()=>{const t=BRAND.momoNumber.replace(/\s/g,'');(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('MoMo number copied ✓'),()=>toast('Number: '+BRAND.momoNumber))};
+
+$('#burger').onclick=()=>$('#links').classList.toggle('open');$$('#links a').forEach(a=>a.onclick=()=>$('#links').classList.remove('open'));
+
+function reveal(){const els=$$('.rv:not(.in)');if(!('IntersectionObserver' in window))return els.forEach(e=>e.classList.add('in'));const o=new IntersectionObserver(a=>a.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}}),{threshold:.1});els.forEach(e=>o.observe(e))}
+
+
+
+/* start: fill in the brand details everywhere */
+
+$('#logoTop').innerHTML=logoImg();$('#logoFoot').innerHTML=logoImg();
+
+$('#callTop').href=$('#callBtn').href=$('#fCall').href='tel:'+BRAND.phoneIntl;
+
+$('#waHero').href=$('#waCustom').href=$('#waBtn').href=$('#fWa').href=$('#waFloat').href=WA;
+
+$('#fCall').textContent='Call '+BRAND.phoneShow;
+
+$('#phoneBig').textContent=BRAND.phoneShow;$('#nameC').textContent=BRAND.momoName;$('#momoBig').textContent=BRAND.momoNumber;$('#momoName').textContent=BRAND.momoName;
+
+$('#marq').innerHTML=Array(4).fill(BRAND.marquee).flat().map(t=>`<span>${esc(t)} ★</span>`).join('');
+
+$('#heroImg').insertAdjacentHTML('afterbegin',slot(BRAND.heroImg,'#fff'));
+
+$('#customImg').innerHTML=slot(BRAND.customImg,'#d7192d');
+
+renderProducts();renderCart();reveal();
+
+</script>
+
+</body>
+
+</html>
